@@ -96,7 +96,11 @@ function createGallery(images) {
       gallery.innerHTML = '';
     }
     appendGallery(images);
-    loadMoreButton.style.display = 'block';
+    if (images.totalHits <= searchParams.page * searchParams.per_page) {
+      loadMoreButton.style.display = 'none';
+    } else {
+      loadMoreButton.style.display = 'block';
+    }
   }
   loader.style.display = 'none';
 }
